@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d1a">
+<title>Ghost Co-op</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <button id="btnMenu" class="chip" title="Levels (Esc)">☰ Levels</button>
+    <div id="title"><span id="lvlName">Ghost Co-op</span></div>
+    <div id="stats"><span id="loopInfo"></span></div>
+  </header>
+
+  <div id="timebar"><div id="timefill"></div></div>
+
+  <div id="stage">
+    <canvas id="cv" width="640" height="320"></canvas>
+    <div id="toast"></div>
+    <div id="hint"></div>
+  </div>
+
+  <div id="actions">
+    <button id="btnCommit" class="btn primary" title="Save your run as an echo (R)">👻 Save echo <kbd>R</kbd></button>
+    <button id="btnRetry" class="btn" title="Redo this loop (Z)">↺ Retry loop <kbd>Z</kbd></button>
+    <button id="btnReset" class="btn" title="Delete all echoes (X)">⟲ Reset level <kbd>X</kbd></button>
+    <button id="btnMute" class="btn" title="Sound on/off">🔊</button>
+  </div>
+
+  <div id="touch" aria-label="Touch controls">
+    <div class="tgroup">
+      <button class="tbtn" data-k="l">◀</button>
+      <button class="tbtn" data-k="r">▶</button>
+    </div>
+    <div class="tgroup">
+      <button class="tbtn big" data-k="j">⤒ Jump</button>
+    </div>
+  </div>
+</div>
+
+<!-- Menu / level select -->
+<div id="menu" class="overlay">
+  <div class="panel">
+    <h1>Ghost Co-op</h1>
+    <p class="sub">Your past runs come back as echoes. Team up with yourself to solve each room.</p>
+    <ol class="how">
+      <li>Run the level. Press <b>Save echo</b> (R) when you want your run to replay as an echo.</li>
+      <li>Echoes repeat your exact moves, press plates, and are <b>solid from above</b>.</li>
+      <li>Reach the glowing exit with the live player. Fewer echoes = more stars.</li>
+    </ol>
+    <div id="levels"></div>
+    <p class="keys"><b>Move</b> ← → / A D &nbsp; <b>Jump</b> Space / ↑ / W &nbsp; <b>Save echo</b> R &nbsp; <b>Retry</b> Z &nbsp; <b>Reset</b> X</p>
+  </div>
+</div>
+
+<!-- Win -->
+<div id="win" class="overlay hidden">
+  <div class="panel small">
+    <h2>Level cleared!</h2>
+    <div id="stars">★★★</div>
+    <p id="winText"></p>
+    <div class="row">
+      <button id="btnAgain" class="btn">Play again</button>
+      <button id="btnNext" class="btn primary">Next level ▶</button>
+    </div>
+  </div>
+</div>
+
+<script src="core.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

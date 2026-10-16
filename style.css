@@ -1,0 +1,56 @@
+:root{
+  --bg:#0b0d1a; --panel:#141830; --line:#262c52; --text:#e8ecff; --muted:#8d95c4;
+  --accent:#6df2c1; --accent2:#ff5d8f; --warn:#ffb347;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);
+  font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;overscroll-behavior:none}
+body{display:flex;justify-content:center;
+  background:radial-gradient(1200px 600px at 50% -10%,#1a2050 0,#0b0d1a 60%)}
+#app{width:100%;max-width:980px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;gap:8px;min-height:100%}
+#hud{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#title{font-weight:700;font-size:18px;letter-spacing:.3px;text-align:center;flex:1}
+#stats{min-width:110px;text-align:right;color:var(--muted);font-size:13px}
+.chip,.btn{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;
+  padding:8px 12px;font:inherit;cursor:pointer;transition:.15s}
+.chip:hover,.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,#1f8f72,#2fd1a0);color:#04150f;border-color:transparent;font-weight:700}
+kbd{background:#0006;border-radius:5px;padding:0 5px;font-size:11px;margin-left:4px;opacity:.8}
+#timebar{height:6px;background:#1a1f3f;border-radius:3px;overflow:hidden}
+#timefill{height:100%;width:100%;background:linear-gradient(90deg,var(--accent),var(--warn),var(--accent2));transform-origin:left}
+#stage{position:relative;width:100%;aspect-ratio:2/1;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  box-shadow:0 10px 40px #0008, inset 0 0 60px #0006}
+#cv{width:100%;height:100%;display:block;image-rendering:pixelated;image-rendering:crisp-edges}
+#toast{position:absolute;left:50%;top:10px;transform:translateX(-50%);background:#000b;padding:6px 14px;border-radius:20px;
+  font-size:13px;opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1}
+#hint{position:absolute;left:0;right:0;bottom:0;padding:6px 12px;font-size:12.5px;color:#cfe;background:linear-gradient(#0000,#000a);pointer-events:none}
+#actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+#touch{display:none;justify-content:space-between;gap:10px;touch-action:none;user-select:none;-webkit-user-select:none}
+.tgroup{display:flex;gap:10px}
+.tbtn{width:84px;height:72px;font-size:26px;border-radius:16px;border:1px solid var(--line);background:#1a2048;color:var(--text);touch-action:none}
+.tbtn.big{width:150px;font-size:20px;background:#1f3a5a}
+.tbtn.on{background:var(--accent);color:#04150f}
+@media (pointer:coarse),(max-width:760px){#touch{display:flex}}
+@media (max-width:520px){kbd{display:none}.btn{padding:8px 10px;font-size:13px}}
+
+.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#05060fe6;z-index:10;padding:14px;overflow:auto}
+.overlay.hidden{display:none}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 24px;max-width:640px;width:100%;
+  box-shadow:0 20px 60px #000a}
+.panel.small{max-width:380px;text-align:center}
+h1{margin:0 0 4px;font-size:30px;background:linear-gradient(90deg,var(--accent),#8ab4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 12px}
+.how{margin:0 0 14px;padding-left:20px;color:#cfd6ff}
+.how li{margin:3px 0}
+#levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.lv{background:#0e1230;border:1px solid var(--line);border-radius:12px;padding:10px;cursor:pointer;text-align:left;color:var(--text);font:inherit}
+.lv:hover:not(:disabled){border-color:var(--accent)}
+.lv:disabled{opacity:.4;cursor:not-allowed}
+.lv b{display:block}
+.lv .st{color:var(--warn);letter-spacing:2px;font-size:14px}
+.keys{color:var(--muted);font-size:12.5px;margin:14px 0 0}
+#stars{font-size:44px;color:var(--warn);letter-spacing:6px;margin:4px 0}
+.row{display:flex;gap:10px;justify-content:center;margin-top:12px}
